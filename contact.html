@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Danielle Manguilimotan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<style>
+:root {
+  --ink: #0e0e0e; --paper: #f5f2eb; --cream: #ede9df;
+  --accent: #c8a96e; --muted: #7a7165; --blue-deep: #1a2b3c;
+  --rule: rgba(14,14,14,0.12);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 4rem; background: rgba(245,242,235,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.hamburger span { width: 24px; height: 1.5px; background: var(--ink); display: block; }
+
+/* CONTACT LAYOUT */
+.contact-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.contact-left {
+  background: var(--blue-deep);
+  color: var(--paper);
+  padding: 6rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; color: var(--accent); text-transform: uppercase; margin-bottom: 1.5rem; }
+.contact-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; line-height: 1; color: var(--paper); margin-bottom: 2rem; }
+.contact-title em { font-style: italic; color: var(--accent); }
+.contact-sub { font-size: 0.88rem; color: rgba(245,242,235,0.55); line-height: 2; max-width: 360px; }
+
+.contact-details { margin-top: auto; padding-top: 4rem; }
+.detail-group { margin-bottom: 2.5rem; }
+.detail-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; color: rgba(245,242,235,0.3); text-transform: uppercase; margin-bottom: 0.5rem; }
+.detail-value { font-size: 0.88rem; color: rgba(245,242,235,0.7); }
+.detail-value a { color: var(--accent); text-decoration: none; transition: opacity 0.3s; }
+.detail-value a:hover { opacity: 0.7; }
+
+.status-pill { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,169,110,0.12); border: 1px solid rgba(200,169,110,0.3); padding: 0.5rem 1rem; margin-bottom: 2.5rem; }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.status-text { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--accent); }
+
+.socials-row { display: flex; gap: 1rem; }
+.social-link { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: rgba(245,242,235,0.4); text-decoration: none; font-size: 0.8rem; transition: all 0.3s; }
+.social-link:hover { border-color: var(--accent); color: var(--accent); }
+
+.whatsapp-link { display: inline-flex; align-items: center; gap: 0.6rem; color: #4ade80; text-decoration: none; font-size: 0.82rem; font-weight: 500; margin-bottom: 2rem; transition: opacity 0.3s; }
+.whatsapp-link:hover { opacity: 0.7; }
+
+/* FORM SIDE */
+.contact-right { padding: 6rem 4rem; display: flex; flex-direction: column; justify-content: center; background: var(--cream); }
+.form-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; margin-bottom: 0.5rem; }
+.form-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 3rem; }
+
+.form-field { margin-bottom: 2rem; }
+.form-field label { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; }
+.form-field input, .form-field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(14,14,14,0.2);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.8rem 0;
+  outline: none;
+  transition: border-color 0.3s;
+  resize: none;
+}
+.form-field input:focus, .form-field textarea:focus { border-color: var(--accent); }
+.form-field input::placeholder, .form-field textarea::placeholder { color: rgba(14,14,14,0.3); }
+
+.submit-btn {
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 1rem 3rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.4s;
+  display: inline-flex; align-items: center; gap: 0.8rem;
+}
+.submit-btn:hover { background: var(--accent); color: var(--ink); }
+.recaptcha-note { font-size: 0.62rem; color: var(--muted); margin-top: 1rem; opacity: 0.6; }
+
+footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+footer p { font-size: 0.7rem; color: rgba(245,242,235,0.3); letter-spacing: 0.08em; }
+
+@media (max-width: 900px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { display: none; flex-direction: column; position: fixed; top: 60px; left: 0; right: 0; background: var(--paper); padding: 2rem; border-bottom: 1px solid var(--rule); gap: 1.5rem; }
+  .nav-links.open { display: flex; }
+  .hamburger { display: flex; }
+  .contact-page { grid-template-columns: 1fr; }
+  .contact-left, .contact-right { padding: 4rem 1.5rem; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Danielle.M</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Skills & Projects</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="contact-page">
+  <div class="contact-left">
+    <div>
+      <p class="contact-label">05 — Contact</p>
+      <h1 class="contact-title">Let's Work<br><em>Together</em></h1>
+      <p class="contact-sub">Open to internships, freelance projects, and collaborative opportunities. Reach out and let's build something great.</p>
+    </div>
+    <div class="contact-details">
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span class="status-text">Available for Freelance / Internship</span>
+      </div>
+
+      <a href="https://wa.me/639912245595" target="_blank" class="whatsapp-link">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+
+      <div class="detail-group">
+        <p class="detail-label">Location</p>
+        <p class="detail-value">Cebu, Philippines</p>
+      </div>
+      <div class="detail-group">
+        <p class="detail-label">Email</p>
+        <p class="detail-value"><a href="mailto:manguilimotan01@gmail.com">manguilimotan01@gmail.com</a></p>
+      </div>
+      <div class="detail-group">
+        <p class="detail-label">Phone</p>
+        <p class="detail-value"><a href="tel:+639912245595">+63 991 224 5595</a></p>
+      </div>
+      <div class="socials-row">
+        <a href="https://www.facebook.com/dandandemadara/" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/dandandemadara/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/danielle-manguilimotan-413b5718b/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-right">
+    <h2 class="form-title">Send a Message</h2>
+    <p class="form-sub">Fill in the form and I'll get back to you as soon as possible.</p>
+    <form id="inline-contact-form">
+      <div class="form-field">
+        <label>Your Name</label>
+        <input type="text" name="name" placeholder="e.g. Juan dela Cruz" required>
+      </div>
+      <div class="form-field">
+        <label>Your Email</label>
+        <input type="email" name="email" placeholder="e.g. juan@email.com" required>
+      </div>
+      <div class="form-field">
+        <label>Message</label>
+        <textarea name="message" rows="5" placeholder="Hi Danielle, I have a project or internship opportunity..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">
+        Send Message <i class="fas fa-arrow-right"></i>
+      </button>
+      <p class="recaptcha-note">This site is protected by reCAPTCHA and the Google Privacy Policy applies.</p>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Danielle Manguilimotan. All Rights Reserved.</p>
+  <p>Cebu, Philippines</p>
+</footer>
+
+<script>
+(function() { emailjs.init("vHqH83-pfvfXuaA0O"); })();
+
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+const form = document.getElementById('inline-contact-form');
+if (form) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button');
+    const orig = btn.innerHTML;
+    btn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+    btn.style.opacity = '0.7';
+    emailjs.sendForm('service_1fu182t', 'template_cr8by4o', this)
+      .then(() => {
+        btn.innerHTML = 'Sent ✓';
+        btn.style.background = 'var(--accent)';
+        btn.style.color = 'var(--ink)';
+        btn.style.opacity = '1';
+        form.reset();
+        setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.style.color = ''; }, 4000);
+      }, () => {
+        btn.innerHTML = 'Failed. Try again. <i class="fas fa-times"></i>';
+        btn.style.opacity = '1';
+      });
+  });
+}
+</script>
+</body>
+</html>

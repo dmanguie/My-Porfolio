@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Danielle Manguilimotan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+:root {
+  --ink: #0e0e0e; --paper: #f5f2eb; --cream: #ede9df;
+  --accent: #c8a96e; --muted: #7a7165; --blue-deep: #1a2b3c;
+  --rule: rgba(14,14,14,0.12);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 4rem;
+  background: rgba(245,242,235,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.hamburger span { width: 24px; height: 1.5px; background: var(--ink); display: block; }
+
+/* PAGE HEADER */
+.page-header {
+  padding: 10rem 4rem 5rem;
+  border-bottom: 1px solid var(--rule);
+  display: flex; gap: 4rem; align-items: flex-end;
+}
+.page-header-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; }
+.page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 8vw, 7rem); font-weight: 300; line-height: 0.95; letter-spacing: -0.02em; }
+.page-header h1 em { font-style: italic; color: var(--accent); }
+.page-header-sub { max-width: 400px; font-size: 0.9rem; color: var(--muted); line-height: 1.9; border-left: 2px solid var(--accent); padding-left: 1.2rem; margin-left: auto; }
+
+/* BIO SECTION */
+.bio-section {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border-bottom: 1px solid var(--rule);
+}
+.bio-image { height: 500px; background: url('image/me3.jpg') center/cover no-repeat; }
+.bio-text { padding: 5rem 4rem; background: var(--cream); display: flex; flex-direction: column; justify-content: center; }
+.section-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+.bio-text h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; margin-bottom: 1.5rem; }
+.bio-text p { font-size: 0.88rem; color: var(--muted); line-height: 2; margin-bottom: 1rem; }
+
+/* CARDS */
+.about-cards { display: grid; grid-template-columns: repeat(3, 1fr); }
+.about-card { padding: 3rem 2.5rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); transition: background 0.3s; }
+.about-card:last-child { border-right: none; }
+.about-card:hover { background: var(--cream); }
+.about-card .card-num { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 2rem; }
+.about-card i { font-size: 1.5rem; color: var(--muted); margin-bottom: 1.5rem; display: block; }
+.about-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 0.8rem; }
+.about-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
+
+/* EXPERIENCE */
+.exp-section { padding: 6rem 4rem; background: var(--blue-deep); color: var(--paper); }
+.exp-section .section-label { color: var(--accent); }
+.exp-section .section-label::after { background: rgba(255,255,255,0.1); }
+.exp-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 300; color: var(--paper); margin-bottom: 4rem; }
+.exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); }
+.exp-card { background: var(--blue-deep); padding: 2.5rem 2rem; border: 1px solid rgba(255,255,255,0.05); }
+.exp-card .role-icon { font-size: 1.5rem; color: var(--accent); margin-bottom: 1.5rem; }
+.exp-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--paper); margin-bottom: 0.3rem; }
+.exp-card .company { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.3rem; }
+.exp-card .duration { font-size: 0.75rem; color: rgba(245,242,235,0.4); margin-bottom: 1.5rem; }
+.exp-card ul { list-style: none; }
+.exp-card li { font-size: 0.8rem; color: rgba(245,242,235,0.55); line-height: 1.8; padding-left: 1rem; position: relative; margin-bottom: 0.3rem; }
+.exp-card li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+
+/* BRANDS */
+.brands-section { padding: 3rem 4rem; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; }
+.brand-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; white-space: nowrap; }
+.brands-list { display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; }
+.brand-item { opacity: 0.45; transition: opacity 0.3s; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.brand-item:hover { opacity: 0.85; }
+.brand-item i { font-size: 2rem; color: var(--ink); }
+.brand-item span { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.brand-item img { height: 40px; width: auto; filter: grayscale(1); }
+
+/* CTA */
+.cta-section { padding: 6rem 4rem; text-align: center; background: var(--paper); }
+.cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300; margin-bottom: 1.5rem; }
+.cta-section h2 em { font-style: italic; color: var(--accent); }
+.cta-section p { font-size: 0.9rem; color: var(--muted); margin-bottom: 3rem; }
+.cta-btn { display: inline-block; background: transparent; border: 1px solid var(--ink); color: var(--ink); padding: 1rem 3rem; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: all 0.4s; }
+.cta-btn:hover { background: var(--ink); color: var(--paper); }
+
+footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+footer p { font-size: 0.7rem; color: rgba(245,242,235,0.3); letter-spacing: 0.08em; }
+
+@media (max-width: 900px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { display: none; flex-direction: column; position: fixed; top: 60px; left: 0; right: 0; background: var(--paper); padding: 2rem; border-bottom: 1px solid var(--rule); gap: 1.5rem; }
+  .nav-links.open { display: flex; }
+  .hamburger { display: flex; }
+  .page-header { flex-direction: column; padding: 7rem 1.5rem 3rem; gap: 2rem; }
+  .page-header-sub { margin-left: 0; }
+  .bio-section { grid-template-columns: 1fr; }
+  .bio-image { height: 60vw; }
+  .bio-text { padding: 3rem 1.5rem; }
+  .about-cards { grid-template-columns: 1fr; }
+  .about-card { border-right: none; }
+  .exp-section { padding: 4rem 1.5rem; }
+  .exp-grid { grid-template-columns: 1fr; }
+  .brands-section { padding: 2rem 1.5rem; gap: 2rem; }
+  .cta-section { padding: 4rem 1.5rem; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Danielle.M</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Skills & Projects</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-header">
+  <div>
+    <p class="page-header-label">About Me</p>
+    <h1>Who<br>Am <em>I?</em></h1>
+  </div>
+  <p class="page-header-sub">A tech enthusiast with a strong background in professional customer relations — and a hunger to build things that matter.</p>
+</div>
+
+<div class="bio-section">
+  <div class="bio-image"></div>
+  <div class="bio-text">
+    <div class="section-label">My Story</div>
+    <h2>From Customer Ops to Code</h2>
+    <p>I spent over three years at Amazon in various customer-facing roles — building empathy, operational discipline, and communication skills that most developers never get early in their careers.</p>
+    <p>Now I'm channeling that experience into technology, currently in my 2nd year of BSIT and moving toward full-stack development with purpose and intention.</p>
+    <p>My goal is simple: to build efficient, user-friendly systems that solve real problems — and to do it well.</p>
+  </div>
+</div>
+
+<div class="about-cards">
+  <div class="about-card">
+    <p class="card-num">01</p>
+    <i class="fas fa-graduation-cap"></i>
+    <h3>My Education</h3>
+    <p>Currently pursuing a Bachelor of Science in Information Technology. 2nd year, focusing on programming, networking, and system design at CIT-U, Cebu.</p>
+  </div>
+  <div class="about-card">
+    <p class="card-num">02</p>
+    <i class="fas fa-crosshairs"></i>
+    <h3>My Goal</h3>
+    <p>To leverage technology to create efficient, user-friendly systems. After graduation, I aim to become a full-stack developer working on real-world products.</p>
+  </div>
+  <div class="about-card">
+    <p class="card-num">03</p>
+    <i class="fas fa-compass"></i>
+    <h3>My Passion</h3>
+    <p>Learning new technologies, debugging code, and exploring the latest trends in IT. Outside work: I travel whenever I can and love finding spots to just chill.</p>
+  </div>
+</div>
+
+<section class="exp-section">
+  <div class="section-label">Professional Experience</div>
+  <h2>Three Years at Amazon</h2>
+  <div class="exp-grid">
+    <div class="exp-card">
+      <div class="role-icon"><i class="fas fa-user-friends"></i></div>
+      <h4>Customer Service Associate</h4>
+      <p class="company">Amazon</p>
+      <p class="duration">20 Months</p>
+      <ul>
+        <li>Built rapport with customers through professional communication</li>
+        <li>Handled complaints calmly to ensure customer satisfaction</li>
+        <li>Identified customer needs to make product suggestions</li>
+      </ul>
+    </div>
+    <div class="exp-card">
+      <div class="role-icon"><i class="fas fa-headset"></i></div>
+      <h4>Resolution Specialist</h4>
+      <p class="company">Amazon</p>
+      <p class="duration">12 Months</p>
+      <ul>
+        <li>Managed high-level escalations with empathy and professionalism</li>
+        <li>Used Salesforce CRM for structured case management</li>
+        <li>Expert in conflict resolution and de-escalation</li>
+      </ul>
+    </div>
+    <div class="exp-card">
+      <div class="role-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+      <h4>Training Assistant</h4>
+      <p class="company">Amazon</p>
+      <p class="duration">10 Months</p>
+      <ul>
+        <li>Created training materials and onboarding presentations</li>
+        <li>Maintained training databases and tracked attendance</li>
+        <li>Coordinated between trainers and departments</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="brands-section">
+  <p class="brand-label">Brands I've worked with</p>
+  <div class="brands-list">
+    <div class="brand-item"><i class="fab fa-amazon"></i><span>Amazon</span></div>
+    <div class="brand-item"><img src="image/dm-logo.jpg" alt="DM Furniture"><span>DM Furniture</span></div>
+    <div class="brand-item"><i class="fas fa-university"></i><span>CIT-U</span></div>
+    <div class="brand-item"><img src="https://storage.googleapis.com/msgsndr/n3153ZygDYl4FJpEjb5P/media/66e6dcdc849df14567d48e57.png" alt="Lead Savvy" style="height:32px; filter:grayscale(1);"><span>Lead Savvy</span></div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <h2>Ready to <em>Collaborate?</em></h2>
+  <p>I bring professional reliability and growing technical skills to every project.</p>
+  <a href="contact.html" class="cta-btn">Get In Touch</a>
+</section>
+
+<footer>
+  <p>© 2026 Danielle Manguilimotan. All Rights Reserved.</p>
+  <p>Cebu, Philippines</p>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+</script>
+</body>
+</html>

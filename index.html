@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danielle Manguilimotan — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+:root {
+  --ink: #0e0e0e;
+  --paper: #f5f2eb;
+  --cream: #ede9df;
+  --accent: #c8a96e;
+  --muted: #7a7165;
+  --blue-deep: #1a2b3c;
+  --rule: rgba(14,14,14,0.12);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 4rem;
+  background: rgba(245,242,235,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.hamburger span { width: 24px; height: 1.5px; background: var(--ink); display: block; transition: 0.3s; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 80px;
+}
+
+.hero-left {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 4rem 3rem 5rem 4rem;
+  border-right: 1px solid var(--rule);
+}
+
+.hero-issue {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-bottom: 3rem;
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+
+.hero-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-desc {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 380px;
+  margin-bottom: 3rem;
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.hero-cta {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.9rem 2.5rem;
+  border: 1px solid var(--ink);
+  transition: all 0.4s;
+  align-self: flex-start;
+}
+.hero-cta:hover { background: var(--ink); color: var(--paper); }
+
+.hero-right {
+  background: var(--blue-deep);
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: flex-end;
+  padding: 3rem;
+}
+
+.hero-right::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url('image/background.jpg') center/cover no-repeat;
+  opacity: 0.35;
+  mix-blend-mode: luminosity;
+}
+
+.hero-tag {
+  position: relative; z-index: 2;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+}
+
+.hero-photo {
+  position: absolute; inset: 0;
+  background: url('image/me4.jpg') center/cover no-repeat;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.7rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-track {
+  display: inline-block;
+  animation: ticker 30s linear infinite;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.ticker-track span { margin: 0 3rem; color: var(--accent); }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── SECTION BASE ── */
+section { padding: 6rem 4rem; }
+
+.section-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+/* ── ABOUT ── */
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5rem;
+  align-items: start;
+  border-top: 1px solid var(--rule);
+}
+
+.about-sidebar .number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 8rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--cream);
+  margin-bottom: -2rem;
+}
+
+.about-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+.about-card {
+  padding: 2rem;
+  border: 1px solid var(--rule);
+  background: var(--cream);
+  transition: all 0.4s;
+}
+.about-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.about-card .card-icon {
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.about-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.8rem;
+}
+.about-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
+
+/* ── SKILLS ── */
+.skills-section {
+  background: var(--blue-deep);
+  color: var(--paper);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.skills-section .section-label { color: var(--accent); }
+.skills-section .section-label::after { background: rgba(255,255,255,0.1); }
+.skills-section .section-title { color: var(--paper); }
+.skills-section .skills-lead { font-size: 0.9rem; color: rgba(245,242,235,0.6); line-height: 1.9; margin-top: 1.5rem; }
+
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.08); }
+.skill-cell {
+  padding: 2rem 1.5rem;
+  background: var(--blue-deep);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.3s;
+}
+.skill-cell:hover { background: rgba(255,255,255,0.04); }
+.skill-cell i { font-size: 1.3rem; color: var(--accent); margin-bottom: 0.8rem; display: block; }
+.skill-cell h4 { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,242,235,0.9); margin-bottom: 0.4rem; }
+.skill-cell p { font-size: 0.78rem; color: rgba(245,242,235,0.45); }
+
+/* ── PROJECTS ── */
+.projects-section { border-top: 1px solid var(--rule); }
+
+.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 3rem; }
+.project-card {
+  border: 1px solid var(--rule);
+  padding: 2.5rem;
+  text-decoration: none;
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+  background: var(--paper);
+}
+.project-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s;
+}
+.project-card:hover::before { transform: scaleY(1); }
+.project-card:hover { background: var(--cream); }
+
+.project-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 2rem;
+}
+.project-card i { font-size: 2rem; color: var(--muted); margin-bottom: 1.5rem; display: block; }
+.project-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 0.8rem;
+}
+.project-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+.project-arrow {
+  position: absolute; bottom: 2.5rem; right: 2.5rem;
+  font-size: 0.9rem; color: var(--accent);
+  transition: transform 0.3s;
+}
+.project-card:hover .project-arrow { transform: translate(4px, -4px); }
+.project-wip { opacity: 0.5; pointer-events: none; }
+
+/* ── EXPERIENCE ── */
+.experience-section {
+  background: var(--cream);
+  border-top: 1px solid var(--rule);
+}
+
+.exp-timeline { margin-top: 3rem; }
+.exp-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 3rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.exp-meta .company {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.exp-meta .duration {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.exp-content h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+.exp-bullets { list-style: none; }
+.exp-bullets li {
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.8;
+  padding-left: 1.2rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+.exp-bullets li::before {
+  content: '—';
+  position: absolute; left: 0;
+  color: var(--accent);
+}
+
+/* ── BRANDS ── */
+.brands-section {
+  border-top: 1px solid var(--rule);
+  padding: 3rem 4rem;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+.brand-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.brands-list {
+  display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;
+}
+.brand-item {
+  opacity: 0.45;
+  transition: opacity 0.3s;
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+}
+.brand-item:hover { opacity: 0.85; }
+.brand-item i { font-size: 2rem; color: var(--ink); }
+.brand-item span { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.brand-item img { height: 40px; width: auto; filter: grayscale(1); }
+
+/* ── CONTACT CTA ── */
+.contact-section {
+  background: var(--ink);
+  color: var(--paper);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 60vh;
+  padding: 0;
+}
+
+.contact-left {
+  padding: 6rem 4rem;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.contact-left .section-label { color: var(--accent); }
+.contact-left .section-label::after { background: rgba(255,255,255,0.1); }
+.contact-left .section-title { color: var(--paper); font-size: clamp(2.5rem, 4vw, 3.5rem); }
+.contact-tagline { font-size: 0.9rem; color: rgba(245,242,235,0.5); line-height: 1.9; margin-top: 1.5rem; max-width: 380px; }
+
+.contact-info { margin-top: auto; padding-top: 3rem; }
+.contact-info a, .contact-info p {
+  display: block;
+  font-size: 0.84rem;
+  color: rgba(245,242,235,0.6);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s;
+}
+.contact-info a:hover { color: var(--accent); }
+
+.contact-right {
+  padding: 6rem 4rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  color: var(--paper);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus { border-color: var(--accent); }
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { color: rgba(245,242,235,0.3); }
+
+.contact-form button {
+  background: transparent;
+  border: 1px solid var(--paper);
+  color: var(--paper);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  transition: all 0.4s;
+  font-weight: 500;
+}
+.contact-form button:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+
+.socials-row { display: flex; gap: 1.5rem; margin-top: 3rem; }
+.social-link {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(245,242,235,0.5);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+}
+.social-link:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 1.5rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer p { font-size: 0.7rem; color: rgba(245,242,235,0.3); letter-spacing: 0.08em; }
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { display: none; flex-direction: column; position: fixed; top: 60px; left: 0; right: 0; background: var(--paper); padding: 2rem; border-bottom: 1px solid var(--rule); gap: 1.5rem; }
+  .nav-links.open { display: flex; }
+  .hamburger { display: flex; }
+
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 3rem 1.5rem 4rem; border-right: none; border-bottom: 1px solid var(--rule); }
+  .hero-right { height: 50vw; min-height: 200px; }
+
+  section { padding: 4rem 1.5rem; }
+  .about-section { grid-template-columns: 1fr; gap: 2rem; }
+  .about-cards { grid-template-columns: 1fr; }
+  .skills-section { grid-template-columns: 1fr; gap: 3rem; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .brands-section { padding: 2rem 1.5rem; gap: 2rem; }
+  .contact-section { grid-template-columns: 1fr; }
+  .contact-left, .contact-right { padding: 3rem 1.5rem; }
+  .contact-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Danielle.M</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="services.html">Skills & Projects</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-left">
+    <p class="hero-issue">BSIT Portfolio · 2026 Edition</p>
+    <h1 class="hero-name">Danielle<br><em>Mangui-<br>limotan</em></h1>
+    <p class="hero-desc">2nd-year BSIT student · Aspiring full-stack developer · 3+ years Amazon experience · Based in Cebu, Philippines</p>
+    <a href="#contact" class="hero-cta">Hire Me</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo"></div>
+    <span class="hero-tag">Available for Internship &amp; Freelance</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    HTML · CSS · JavaScript <span>✦</span> MySQL · Firebase <span>✦</span> Java <span>✦</span> Salesforce CRM <span>✦</span> Conflict Resolution <span>✦</span> Web Development <span>✦</span> Social Media Management <span>✦</span> HTML · CSS · JavaScript <span>✦</span> MySQL · Firebase <span>✦</span> Java <span>✦</span> Salesforce CRM <span>✦</span> Conflict Resolution <span>✦</span> Web Development <span>✦</span> Social Media Management <span>✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-section">
+    <div class="about-sidebar">
+      <div class="number">01</div>
+      <div class="section-label">About Me</div>
+      <div class="section-title">Who<br>Am I?</div>
+    </div>
+    <div>
+      <p style="font-size:0.95rem; color:var(--muted); line-height:2; max-width:560px; margin-top:3rem;">
+        A tech enthusiast with a strong background in professional customer relations. I combine three years of corporate Amazon experience with a growing passion for software development. Currently in my 2nd year of BSIT, building toward a career as a full-stack developer.
+      </p>
+      <div class="about-cards">
+        <div class="about-card">
+          <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Education</h3>
+          <p>2nd Year, Bachelor of Science in Information Technology. Focused on programming, networking, and systems design.</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon"><i class="fas fa-crosshairs"></i></div>
+          <h3>Goal</h3>
+          <p>To become a full-stack developer who builds efficient, user-centered systems after graduation.</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon"><i class="fas fa-compass"></i></div>
+          <h3>Passion</h3>
+          <p>Learning new tech, debugging code, exploring IT trends. Outside work: traveling and finding new places to chill.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div>
+    <div class="section-label">02 — Expertise</div>
+    <div class="section-title">Skills<br>Overview</div>
+    <p class="skills-lead">A balanced mix of technical foundations and professional operations — built across the classroom and three years at Amazon.</p>
+    <a href="projects/Resume (1).pdf" target="_blank" style="display:inline-block; margin-top:2.5rem; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:3px;">Download Resume →</a>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-cell">
+      <i class="fas fa-code"></i>
+      <h4>HTML / CSS / JS</h4>
+      <p>Responsive, semantic web interfaces</p>
+    </div>
+    <div class="skill-cell">
+      <i class="fas fa-database"></i>
+      <h4>MySQL & Firebase</h4>
+      <p>Database design & management</p>
+    </div>
+    <div class="skill-cell">
+      <i class="fab fa-java"></i>
+      <h4>Java</h4>
+      <p>OOP fundamentals & logic building</p>
+    </div>
+    <div class="skill-cell">
+      <i class="fas fa-users"></i>
+      <h4>CRM (Salesforce)</h4>
+      <p>Case management & customer ops</p>
+    </div>
+    <div class="skill-cell">
+      <i class="fas fa-chalkboard-teacher"></i>
+      <h4>Training Coord.</h4>
+      <p>Materials, databases, facilitation</p>
+    </div>
+    <div class="skill-cell">
+      <i class="fas fa-share-alt"></i>
+      <h4>Social Media</h4>
+      <p>Content strategy & management</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+  <div class="section-label">03 — Work</div>
+  <div class="section-title">Academic Projects</div>
+  <div class="projects-grid">
+    <a href="https://dmfurniture.netlify.app" target="_blank" class="project-card">
+      <div class="project-num">001</div>
+      <i class="fas fa-couch"></i>
+      <h3>DM Furniture Website</h3>
+      <p>A full e-commerce-style website for a local furniture business, built with HTML, CSS, and JavaScript.</p>
+      <span class="project-arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
+    </a>
+    <a href="https://orvantaweb.netlify.app/" target="_blank" class="project-card">
+      <div class="project-num">002</div>
+      <i class="fas fa-briefcase"></i>
+      <h3>Orvanta</h3>
+      <p>A modern platform for growing businesses and operations — built and deployed on Netlify.</p>
+      <span class="project-arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
+    </a>
+    <a href="projects/Lead Savvy/expertise.html" target="_blank" class="project-card">
+      <div class="project-num">003</div>
+      <i class="fas fa-layer-group"></i>
+      <h3>Landing Page</h3>
+      <p>A professional landing page built for Lead Savvy, featuring clean layout and conversion-focused design.</p>
+      <span class="project-arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
+    </a>
+    <div class="project-card project-wip">
+      <div class="project-num">004</div>
+      <i class="fas fa-network-wired"></i>
+      <h3>Network Design</h3>
+      <p>An enterprise-level network topology design. Currently in progress.</p>
+    </div>
+    <div class="project-card project-wip">
+      <div class="project-num">005</div>
+      <i class="fas fa-mobile-alt"></i>
+      <h3>Mobile UI Prototype</h3>
+      <p>A high-fidelity mobile UI prototype built with Figma. Currently in progress.</p>
+    </div>
+    <div class="project-card" style="background:var(--blue-deep); color:var(--paper); pointer-events:none;">
+      <div class="project-num" style="color:var(--accent);">···</div>
+      <i class="fas fa-plus" style="color:rgba(245,242,235,0.2);"></i>
+      <h3 style="color:var(--paper); font-style:italic;">More Coming</h3>
+      <p style="color:rgba(245,242,235,0.4);">New projects added each semester as skills grow.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience-section" id="experience">
+  <div class="section-label">04 — History</div>
+  <div class="section-title">Professional Experience</div>
+  <div class="exp-timeline">
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="company">Amazon</p>
+        <p class="duration">20 Months</p>
+      </div>
+      <div class="exp-content">
+        <h3>Customer Service Associate</h3>
+        <ul class="exp-bullets">
+          <li>Built strong rapport with customers through professional communication</li>
+          <li>Handled complaints calmly to ensure consistent customer satisfaction</li>
+          <li>Identified customer needs to make appropriate product suggestions</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="company">Amazon</p>
+        <p class="duration">12 Months</p>
+      </div>
+      <div class="exp-content">
+        <h3>Resolution Specialist</h3>
+        <ul class="exp-bullets">
+          <li>Managed high-level escalations with empathy and professionalism</li>
+          <li>Used Salesforce CRM for structured case management workflows</li>
+          <li>Expert in conflict resolution and de-escalation techniques</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <p class="company">Amazon</p>
+        <p class="duration">10 Months</p>
+      </div>
+      <div class="exp-content">
+        <h3>Training Assistant</h3>
+        <ul class="exp-bullets">
+          <li>Created training materials, presentations, and onboarding modules</li>
+          <li>Maintained training databases and tracked attendance metrics</li>
+          <li>Coordinated between trainers and departments for seamless operations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands-section">
+  <p class="brand-label">Brands I've worked with</p>
+  <div class="brands-list">
+    <div class="brand-item">
+      <i class="fab fa-amazon"></i>
+      <span>Amazon</span>
+    </div>
+    <div class="brand-item">
+      <img src="image/dm-logo.jpg" alt="DM Furniture">
+      <span>DM Furniture</span>
+    </div>
+    <div class="brand-item">
+      <i class="fas fa-university"></i>
+      <span>CIT-U</span>
+    </div>
+    <div class="brand-item">
+      <img src="https://storage.googleapis.com/msgsndr/n3153ZygDYl4FJpEjb5P/media/66e6dcdc849df14567d48e57.png" alt="Lead Savvy" style="height:32px; filter:grayscale(1);">
+      <span>Lead Savvy</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-left">
+    <div>
+      <div class="section-label">05 — Contact</div>
+      <div class="section-title">Let's Work Together</div>
+      <p class="contact-tagline">Open to internships, freelance projects, and collaborative opportunities. Let's build something great.</p>
+    </div>
+    <div class="contact-info">
+      <p><strong style="color:rgba(245,242,235,0.3); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase;">Location</strong></p>
+      <p style="margin-top:0.3rem;">Cebu, Philippines</p>
+      <br>
+      <p><strong style="color:rgba(245,242,235,0.3); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase;">Email</strong></p>
+      <a href="mailto:manguilimotan01@gmail.com" style="margin-top:0.3rem;">manguilimotan01@gmail.com</a>
+      <br>
+      <p><strong style="color:rgba(245,242,235,0.3); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase;">Phone</strong></p>
+      <a href="tel:+639912245595" style="margin-top:0.3rem;">+63 991 224 5595</a>
+      <div class="socials-row">
+        <a href="https://www.facebook.com/dandandemadara/" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/dandandemadara/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/danielle-manguilimotan-413b5718b/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="contact-right">
+    <form id="inline-contact-form" class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="4" placeholder="Hi Danielle, I have a project or internship opportunity..."></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p style="font-size:0.65rem; color:rgba(245,242,235,0.25); margin-top:1rem;">Protected by reCAPTCHA · Google Privacy Policy applies</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Danielle Manguilimotan. All Rights Reserved.</p>
+  <p>Cebu, Philippines</p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+(function() { emailjs.init("vHqH83-pfvfXuaA0O"); })();
+
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+const form = document.getElementById('inline-contact-form');
+if (form) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button');
+    btn.textContent = 'Sending...';
+    btn.style.opacity = '0.6';
+    emailjs.sendForm('service_1fu182t', 'template_cr8by4o', this)
+      .then(() => {
+        btn.textContent = 'Sent ✓';
+        btn.style.background = 'var(--accent)';
+        btn.style.borderColor = 'var(--accent)';
+        btn.style.color = 'var(--ink)';
+        btn.style.opacity = '1';
+        form.reset();
+        setTimeout(() => {
+          btn.textContent = 'Send Message';
+          btn.style.background = '';
+          btn.style.borderColor = '';
+          btn.style.color = '';
+        }, 3000);
+      }, () => {
+        btn.textContent = 'Failed. Try again.';
+        btn.style.opacity = '1';
+      });
+  });
+}
+</script>
+</body>
+</html>

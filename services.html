@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills & Projects — Danielle Manguilimotan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+:root {
+  --ink: #0e0e0e; --paper: #f5f2eb; --cream: #ede9df;
+  --accent: #c8a96e; --muted: #7a7165; --blue-deep: #1a2b3c;
+  --rule: rgba(14,14,14,0.12);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 4rem; background: rgba(245,242,235,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.hamburger span { width: 24px; height: 1.5px; background: var(--ink); display: block; }
+
+.page-header { padding: 10rem 4rem 5rem; border-bottom: 1px solid var(--rule); display: flex; gap: 4rem; align-items: flex-end; }
+.page-header-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; }
+.page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 8vw, 7rem); font-weight: 300; line-height: 0.95; letter-spacing: -0.02em; }
+.page-header h1 em { font-style: italic; color: var(--accent); }
+.page-header-sub { max-width: 400px; font-size: 0.9rem; color: var(--muted); line-height: 1.9; border-left: 2px solid var(--accent); padding-left: 1.2rem; margin-left: auto; }
+
+/* SKILLS OVERVIEW */
+.skills-overview {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border-bottom: 1px solid var(--rule);
+}
+.skills-left { padding: 5rem 4rem; border-right: 1px solid var(--rule); }
+.skills-right { padding: 5rem 4rem; }
+.section-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+.skills-left h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem; }
+.skills-left p { font-size: 0.88rem; color: var(--muted); line-height: 2; }
+
+.skill-group { margin-bottom: 3rem; }
+.skill-group h4 { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.8rem; }
+.skill-row { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid rgba(14,14,14,0.05); }
+.skill-name { font-size: 0.85rem; display: flex; align-items: center; gap: 0.8rem; color: var(--ink); }
+.skill-name i { font-size: 0.9rem; color: var(--accent); }
+.skill-tag { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; color: var(--muted); }
+
+/* PROJECTS */
+.projects-section { padding: 6rem 4rem; border-bottom: 1px solid var(--rule); }
+.projects-intro { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
+.projects-intro h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 300; }
+.projects-intro p { font-size: 0.8rem; color: var(--muted); max-width: 280px; text-align: right; line-height: 1.8; }
+
+.projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+.project-card { padding: 3rem; border: 1px solid var(--rule); text-decoration: none; color: var(--ink); position: relative; overflow: hidden; transition: all 0.4s; background: var(--paper); }
+.project-card::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.6s cubic-bezier(0.77,0,0.175,1); z-index: 0; }
+.project-card:hover::after { transform: scaleX(1); }
+.project-card > * { position: relative; z-index: 1; transition: color 0.4s; }
+.project-card:hover .project-num { color: rgba(14,14,14,0.5); }
+.project-card:hover h3, .project-card:hover p { color: var(--ink); }
+.project-card:hover .project-arrow { color: var(--ink); }
+.project-num { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--accent); letter-spacing: 0.2em; margin-bottom: 2rem; display: block; }
+.project-card i { font-size: 2rem; color: var(--muted); margin-bottom: 1.5rem; display: block; transition: color 0.4s; }
+.project-card:hover i { color: var(--ink); }
+.project-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 0.8rem; }
+.project-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.8; max-width: 320px; }
+.project-arrow { position: absolute; bottom: 3rem; right: 3rem; font-size: 0.9rem; color: var(--accent); transition: all 0.3s; z-index: 1; }
+.project-card:hover .project-arrow { transform: translate(4px, -4px); }
+.project-wip { opacity: 0.5; pointer-events: none; }
+.project-wip::after { display: none; }
+
+.wip-badge { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.12em; color: var(--muted); border: 1px solid var(--rule); padding: 0.3rem 0.7rem; margin-top: 1rem; }
+
+/* CTA */
+.cta-strip { background: var(--blue-deep); padding: 5rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+.cta-strip h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--paper); }
+.cta-strip h2 em { font-style: italic; color: var(--accent); }
+.cta-btn { display: inline-block; border: 1px solid var(--paper); color: var(--paper); padding: 1rem 3rem; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: all 0.4s; white-space: nowrap; }
+.cta-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+
+footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+footer p { font-size: 0.7rem; color: rgba(245,242,235,0.3); letter-spacing: 0.08em; }
+
+@media (max-width: 900px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { display: none; flex-direction: column; position: fixed; top: 60px; left: 0; right: 0; background: var(--paper); padding: 2rem; border-bottom: 1px solid var(--rule); gap: 1.5rem; }
+  .nav-links.open { display: flex; }
+  .hamburger { display: flex; }
+  .page-header { flex-direction: column; padding: 7rem 1.5rem 3rem; gap: 2rem; }
+  .page-header-sub { margin-left: 0; }
+  .skills-overview { grid-template-columns: 1fr; }
+  .skills-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 3rem 1.5rem; }
+  .skills-right { padding: 3rem 1.5rem; }
+  .projects-section { padding: 4rem 1.5rem; }
+  .projects-intro { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .projects-intro p { text-align: left; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .cta-strip { flex-direction: column; gap: 2rem; padding: 4rem 1.5rem; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Danielle.M</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html" class="active">Skills & Projects</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-header">
+  <div>
+    <p class="page-header-label">Skills & Projects</p>
+    <h1>My<br><em>Expertise</em></h1>
+  </div>
+  <p class="page-header-sub">Combining technical development foundations with professional operational experience from three years at Amazon.</p>
+</div>
+
+<div class="skills-overview">
+  <div class="skills-left">
+    <div class="section-label">Overview</div>
+    <h2>A Balanced Skill Set</h2>
+    <p>With a background in both IT and Amazon operations, I offer something most students don't: real corporate experience alongside technical ability. I understand how technology serves people, not just how it works.</p>
+    <br>
+    <a href="projects/Resume (1).pdf" target="_blank" style="display:inline-block; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:3px;">Download Resume →</a>
+  </div>
+  <div class="skills-right">
+    <div class="skill-group">
+      <h4>Technical Skills</h4>
+      <div class="skill-row">
+        <span class="skill-name"><i class="fas fa-code"></i> HTML / CSS / JavaScript</span>
+        <span class="skill-tag">Web Dev</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-name"><i class="fas fa-database"></i> MySQL & Firebase</span>
+        <span class="skill-tag">Database</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-name"><i class="fab fa-java"></i> Java</span>
+        <span class="skill-tag">OOP</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Professional Skills</h4>
+      <div class="skill-row">
+        <span class="skill-name"><i class="fas fa-users"></i> Salesforce CRM</span>
+        <span class="skill-tag">Customer Ops</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-name"><i class="fas fa-chalkboard-teacher"></i> Training Coordination</span>
+        <span class="skill-tag">Operations</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-name"><i class="fas fa-comments"></i> Conflict Resolution</span>
+        <span class="skill-tag">Leadership</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-name"><i class="fas fa-share-alt"></i> Social Media Management</span>
+        <span class="skill-tag">Marketing</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="projects-section">
+  <div class="projects-intro">
+    <div>
+      <div class="section-label">Projects</div>
+      <h2>Academic Work</h2>
+    </div>
+    <p>Click any project to view it live. In-progress items will be added as they're completed.</p>
+  </div>
+  <div class="projects-grid">
+    <a href="https://dmfurniture.netlify.app" target="_blank" class="project-card">
+      <span class="project-num">001</span>
+      <i class="fas fa-couch"></i>
+      <h3>DM Furniture Website</h3>
+      <p>A full e-commerce-style website for a local furniture business. HTML, CSS, and JavaScript — live on Netlify.</p>
+      <span class="project-arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
+    </a>
+    <a href="https://orvantaweb.netlify.app/" target="_blank" class="project-card">
+      <span class="project-num">002</span>
+      <i class="fas fa-briefcase"></i>
+      <h3>Orvanta</h3>
+      <p>A modern platform for growing businesses and operations — built and deployed on Netlify.</p>
+      <span class="project-arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
+    </a>
+    <a href="projects/Lead Savvy/expertise.html" target="_blank" class="project-card">
+      <span class="project-num">003</span>
+      <i class="fas fa-layer-group"></i>
+      <h3>Landing Page</h3>
+      <p>A professional landing page for Lead Savvy, featuring clean layout and conversion-focused design.</p>
+      <span class="project-arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
+    </a>
+    <div class="project-card project-wip">
+      <span class="project-num">004</span>
+      <i class="fas fa-network-wired"></i>
+      <h3>Network Design</h3>
+      <p>An enterprise-level network topology design project.</p>
+      <span class="wip-badge">In Progress</span>
+    </div>
+    <div class="project-card project-wip">
+      <span class="project-num">005</span>
+      <i class="fas fa-mobile-alt"></i>
+      <h3>Mobile UI Prototype</h3>
+      <p>A high-fidelity mobile UI prototype built with Figma.</p>
+      <span class="wip-badge">In Progress</span>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <h2>Have a project in<br><em>mind?</em></h2>
+  <a href="contact.html" class="cta-btn">Let's Talk</a>
+</div>
+
+<footer>
+  <p>© 2026 Danielle Manguilimotan. All Rights Reserved.</p>
+  <p>Cebu, Philippines</p>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+</script>
+</body>
+</html>

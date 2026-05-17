@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Suite | Finance Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!--
+    <div id="auth-overlay" class="overlay">
+        <div class="form-section auth-card">
+            <h2 id="auth-title">Welcome Back</h2>
+            <p style="font-size: 0.8rem; color: #636e72; margin-bottom: 20px;">Trial Login: admin / admin</p>
+            <input type="text" id="auth-email" placeholder="Email or Username">
+            <input type="password" id="auth-pw" placeholder="Password">
+            <button onclick="handleAuth()" class="btn-primary" id="auth-btn">Login</button>
+            <p onclick="toggleAuthMode()" id="auth-toggle">Don't have an account? Sign Up</p>
+            <p id="auth-error" class="error-text"></p>
+        </div>
+    </div>
+-->
+    <header class="main-header">
+        <h1 id="display-biz-name">MY BUSINESS SUITE</h1>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-links">
+                <button onclick="showPage('dashboard')" id="nav-dashboard" class="nav-btn active">Dashboard</button>
+                <button onclick="showPage('attendance')" id="nav-attendance" class="nav-btn">Payroll</button>
+                <button onclick="showPage('settings')" id="nav-settings" class="nav-btn">Settings</button>
+                <button onclick="logout()" class="nav-btn" style="color: var(--coral); margin-left: 20px;">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="dashboard-page" class="page">
+        <div class="dashboard-summary">
+            <div class="card card-savings"><span>Net Savings</span><p id="savings-val">₱0.00</p></div>
+            <div class="card card-sales"><span>Total Sales</span><p id="sales-val">₱0.00</p></div>
+            <div class="card card-debt"><span>Total Debt</span><p id="debt-val">₱0.00</p></div>
+        </div>
+
+        <div class="grid-container">
+            <section class="form-section">
+                <h3>Record Transaction</h3>
+                <form id="finance-form">
+                    <input type="text" id="itemName" placeholder="Description" required>
+                    <input type="number" step="0.01" id="amount" placeholder="Amount (₱)" required>
+                    <select id="type-select"></select>
+                    <select id="status">
+                        <option value="Paid">Paid</option>
+                        <option value="Debt">Debt</option>
+                    </select>
+                    <button type="submit" class="btn-primary">Save Entry</button>
+                </form>
+            </section>
+            
+            <section class="table-section">
+                <h3>Finance Ledger</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Date</th><th>Type</th><th>Item</th><th>Amount</th><th>Status</th></tr></thead>
+                        <tbody id="finance-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <main id="attendance-page" class="page" style="display:none;">
+        <div class="grid-container">
+            <section class="form-section">
+                <h3>Staff Management</h3>
+                <input type="text" id="staff-name-input" placeholder="Staff Name">
+                <input type="number" id="staff-rate-input" placeholder="Daily/Hourly Rate">
+                <button onclick="addStaffMember()" class="btn-primary">Add Staff</button>
+                <div id="staff-list" class="tag-container" style="margin-top:15px;"></div>
+            </section>
+            <section class="table-section">
+                <h3>Payroll Ledger</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Name</th><th>Date</th><th>Payable</th><th>Action</th></tr></thead>
+                        <tbody id="attendance-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <main id="settings-page" class="page" style="display:none;">
+        <div class="grid-container">
+            <section class="form-section">
+                <h3>Branding & Theme</h3>
+                <label>Business Name</label>
+                <input type="text" id="set-biz-name">
+                <label>Theme Color</label>
+                <input type="color" id="set-theme-color" style="height: 50px; cursor: pointer;">
+                <button onclick="saveSettings()" class="btn-primary" style="margin-top:10px;">Save Profile</button>
+            </section>
+
+            <section class="form-section">
+                <h3>Custom Categories</h3>
+                <div style="display:flex; gap:10px;">
+                    <input type="text" id="new-cat-name" placeholder="Category Name">
+                    <button onclick="addCategory()" class="btn-secondary">Add</button>
+                </div>
+                <div id="category-list" class="tag-container" style="margin-top:10px;"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

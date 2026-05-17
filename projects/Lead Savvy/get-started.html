@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadSavvy - Get Started</title>
+    <link rel="icon" href="https://storage.googleapis.com/msgsndr/n3153ZygDYl4FJpEjb5P/media/66e6dcdc849df14567d48e57.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("vHqH83-pfvfXuaA0O");
+       })();
+    </script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="image/lead-savvy.png" alt="LeadSavvy">
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">— HOME</a></li>
+                <li><a href="expertise.html">EXPERTISE</a></li>
+                <li><a href="process.html">PROCESS</a></li>
+                <li><a href="get-started.html" class="nav-cta">GET STARTED</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="contact-section">
+        <div class="container grid-2-col contact-layout">
+            
+            <div class="contact-info">
+                <h2 class="section-title">LET'S START<br>YOUR MACHINE</h2>
+                <p class="section-text">
+                    Answer the survey to see if you qualify for our BuildGen™ System.
+                </p>
+                <div class="info-box">
+                    <h5>CAUTION:</h5>
+                    <p class="text-red">This will be your sales machine!</p>
+                </div>
+                <div class="contact-details">
+                    <p><strong>Email:</strong> hello@leadsavvy.com</p>
+                    <p><strong>Status:</strong> Accepting New Clients</p>
+                </div>
+            </div>
+
+            <div class="form-wrapper-styled">
+                <div class="progress-track"><div class="progress-fill" id="progressBar"></div></div>
+                
+                <form id="surveyForm">
+                    <div class="step active" id="step1">
+                        <label>Were you able to watch the video? *</label>
+                        <div class="options-grid">
+                            <label class="radio-card"><input type="radio" name="video_watched" value="Yes"> Yes</label>
+                            <label class="radio-card"><input type="radio" name="video_watched" value="No"> No</label>
+                        </div>
+                        <label>Type of company *</label>
+                        <div class="options-grid">
+                            <label class="radio-card"><input type="radio" name="company_type" value="Design + Build"> Design + Build</label>
+                            <label class="radio-card"><input type="radio" name="company_type" value="Interior Design"> Interior Design</label>
+                            <label class="radio-card"><input type="radio" name="company_type" value="Others"> Others</label>
+                        </div>
+                        <label>Type of Projects *</label>
+                        <div class="options-grid">
+                            <label class="radio-card"><input type="radio" name="project_type" value="Residential"> Residential</label>
+                            <label class="radio-card"><input type="radio" name="project_type" value="Commercial"> Commercial</label>
+                            <label class="radio-card"><input type="radio" name="project_type" value="Both"> Both</label>
+                        </div>
+                        <label>Do you have at least ₱15M annual revenue? *</label>
+                        <div class="options-grid">
+                            <label class="radio-card"><input type="radio" name="revenue_check" value="Yes"> Yes</label>
+                            <label class="radio-card"><input type="radio" name="revenue_check" value="No"> No</label>
+                        </div>
+                    </div>
+
+                    <div class="step" id="step2">
+                        <label>How soon are you looking to start? *</label>
+                        <div class="options-grid">
+                            <label class="radio-card"><input type="radio" name="start_time" value="ASAP"> ASAP</label>
+                            <label class="radio-card"><input type="radio" name="start_time" value="This Month"> This Month</label>
+                        </div>
+                        <label>Active Facebook Page? *</label>
+                        <div class="options-grid">
+                            <label class="radio-card"><input type="radio" name="has_fb" value="Yes"> Yes</label>
+                            <label class="radio-card"><input type="radio" name="has_fb" value="No"> No</label>
+                        </div>
+                        <label>Facebook Page Name *</label>
+                        <input type="text" name="fb_page_name" placeholder="Page Name">
+                    </div>
+
+                    <div class="step" id="step3">
+                        <label>Which offer to reserve? *</label>
+                        <div class="options-grid">
+                            <label class="radio-card"><input type="radio" name="offer" value="Trial"> 1 Month Trial (₱15k)</label>
+                            <label class="radio-card"><input type="radio" name="offer" value="Partner"> 4-Month Partner (₱25k/mo)</label>
+                        </div>
+                        <div class="ref-images">
+                            <p class="small-label">(Offer Refs)</p>
+                            <img src="https://images.leadconnectorhq.com/image/f_webp/q_85/r_1000/u_https://storage.googleapis.com/highlevel-backend.appspot.com/location/n3153ZygDYl4FJpEjb5P/form/GeGB0787ZOPdi5cP1IL6/92347978-e13c-440d-a5cb-9b0e112eb9e5.png" alt="Ref">
+                        </div>
+                    </div>
+
+                    <div class="step" id="step4">
+                        <input type="text" name="first_name" placeholder="First Name *">
+                        <input type="text" name="last_name" placeholder="Last Name *">
+                        <input type="text" name="area" placeholder="Service Area *">
+                        <input type="tel" name="phone" placeholder="Phone Number *">
+                        <input type="email" name="email" placeholder="Email Address">
+                    </div>
+
+                    <div class="form-actions">
+                        <span id="stepCounter">1 / 4</span>
+                        <div class="buttons">
+                            <button type="button" id="nextBtn">NEXT</button>
+                            <button type="button" id="submitBtn" class="hidden">SUBMIT</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 LeadSavvy. All Rights Reserved.</p>
+            <div class="socials"><a href="#">Privacy Policy</a><a href="#">Terms</a></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
